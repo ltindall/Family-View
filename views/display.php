@@ -56,7 +56,19 @@
 	</div>
   </nav>
   -->
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+
+
+<br>
+<br>
+<div id="login">
+<h1>
+<a href="/" tabindex="-1"> SJV Family View </a>    
+</h1>
+</div>
+<br>
+<br>
+<div class="container container-main" role="main">
+    <div class="navbar navbar-inverse row display-nav" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -73,18 +85,14 @@
             <li class="active"><a href="#">Home</a></li>
           </ul>
             <ul class="nav navbar-nav navbar-right" >
-            <li><a href="index.php?logout" class="navbar-nav pull-right">Logout</a></li>
+            <li><a href="index.php?logout" class="navbar-nav ">Logout</a></li>
           </ul>
         </div>
       </div>
     </div>
 
 
-<br>
-<br>
-<br>
-<br>
-<div class="container container-main" role="main">
+<div class="display">
 <div class="page-header">
 	<h1>Parent Settings</h1>
 </div>
@@ -137,7 +145,7 @@
 </div>
 -->
 <div class="row">
-<div class="col-md-8 col-md-offset-2 ">
+<div class="col-md-12">
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingOne">
@@ -341,7 +349,7 @@ Mother Info</a>
 -->
 
 <div class="row">
-<div class="col-md-8 col-md-offset-2">
+<div class="col-md-12">
 
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
   
@@ -447,6 +455,7 @@ endforeach;
     }
 	*/
 ?>
+</div>
 </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

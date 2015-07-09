@@ -29,14 +29,14 @@ background-image: -webkit-gradient(
 	linear,
 	left top,
 	left bottom,
-	color-stop(0, #0F4F01),
-	color-stop(1, #1DAB00)
+	color-stop(0, #084501),
+	color-stop(1, #0D8000)
 );
-background-image: -o-linear-gradient(bottom, #0F4F01 0%, #1DAB00 100%);
-background-image: -moz-linear-gradient(bottom, #0F4F01 0%, #1DAB00 100%);
-background-image: -webkit-linear-gradient(bottom, #0F4F01 0%, #1DAB00 100%);
-background-image: -ms-linear-gradient(bottom, #0F4F01 0%, #1DAB00 100%);
-background-image: linear-gradient(to bottom, #0F4F01 0%, #1DAB00 100%);
+background-image: -o-linear-gradient(bottom, #084501 0%, #0D8000 100%);
+background-image: -moz-linear-gradient(bottom, #084501 0%, #0D8000 100%);
+background-image: -webkit-linear-gradient(bottom, #084501 0%, #0D8000 100%);
+background-image: -ms-linear-gradient(bottom, #084501 0%, #0D8000 100%);
+background-image: linear-gradient(to bottom, #084501 0%, #0D8000 100%);	
 	/*background-image: -webkit-gradient(
 	linear,
 	left top,
@@ -77,3 +77,15 @@ background-image: linear-gradient(to bottom, #005406 0%, #008C00 100%);
 	border-radius:6px;
 	min-height:100%; 
 }
+.container{
+	width: 970px; 
+}
+
+.display-nav{
+	border-bottom-right-radius: 0px;	
+	border-bottom-left-radius: 0px;
+}
+.display{
+	padding-left: 50px; 
+	padding-right: 50px; 
+}	
