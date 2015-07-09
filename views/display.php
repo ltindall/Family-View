@@ -29,7 +29,9 @@
     <link rel="stylesheet"
     href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
   
- 
+	<!-- Custom style -->
+	<link href="css/style.css" rel="stylesheet">
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -38,6 +40,7 @@
     <![endif]-->
   </head>
   <body>
+  <!--
   <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
@@ -48,22 +51,157 @@
 			<span class="icon-bar"></span>
 		  </button>
 		  <a class="navbar-brand" href="/">Home</a>
+		  <a class="navbar-brand" href="index.php?logout">Logout</a>
 		</div>
 	</div>
   </nav>
-		
+  -->
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand"
+            href="#">SJV Family View</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+          </ul>
+            <ul class="nav navbar-nav navbar-right" >
+            <li><a href="index.php?logout" class="navbar-nav pull-right">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
 
 <br>
 <br>
 <br>
 <br>
-<div class="container" role="main">
-<div class="jumbotron">
-    <h1> SJV Family View </h1>
-</div>
+<div class="container container-main" role="main">
 <div class="page-header">
 	<h1>Parent Settings</h1>
 </div>
+<!--
+<div class="panel-group" id="accordion">
+    <div class="panel panel-default" id="panel1">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+				<a data-toggle="collapse" data-target="#collapseOne" 
+					href="#collapseOne">
+					Collapsible Group Item #1
+				</a>
+			</h4>
+
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse ">
+            <div class="panel-body">
+				Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry 
+				richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck 
+				quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid 
+				single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer 
+				labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. 
+				Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't 
+				heard of them accusamus labore sustainable VHS.
+			</div>
+        </div>
+    </div>
+    <div class="panel panel-default" id="panel2">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+				<a data-toggle="collapse" data-target="#collapseTwo" 
+					href="#collapseTwo" class="collapsed">
+					Collapsible Group Item #2
+				</a>
+			</h4>
+
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse">
+            <div class="panel-body">
+				Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry 
+				richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck 
+				quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid 
+				single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer 
+				labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. 
+				Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't 
+				heard of them accusamus labore sustainable VHS.
+			</div>
+        </div>
+    </div>
+</div>
+-->
+<div class="row">
+<div class="col-md-8 col-md-offset-2 ">
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse"  href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+		Father Info</a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body"> 
+		<h3> Name  </h3>
+		<pre> <?php echo $rows[0]['father_name']; ?> </pre>
+		<h3> Address </h3>
+		<pre> <?php echo $rows[0]['father_address']; ?> </pre>
+
+		<h3> Phone </h3>
+		<pre> <?php echo $rows[0]['father_phone']; ?> </pre>
+		<!--<button type="button" class="btn btn-lg btn-danger
+		pull-right">Edit</button>-->
+		<br>
+		<form action="parent-update.php" method="post">
+		<input type="hidden" name="parent" value="father">
+		<button class="btn btn-outline btn-danger btn-lg
+		btn-block" type="submit" name="editFamily">Edit</button></form>
+	  
+      </div>
+    </div>
+  </div>
+<br>
+
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse"  href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+Mother Info</a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body">
+   
+		<h3> Name  </h3>
+		<pre> <?php echo $rows[0]['mother_name']; ?> </pre>
+		<h3> Address </h3>
+		<pre> <?php echo $rows[0]['mother_address']; ?> </pre>
+
+		<h3> Phone </h3>
+		<pre> <?php echo $rows[0]['mother_phone']; ?> </pre>
+		<!--<button type="button" class="btn btn-lg btn-danger
+		pull-right">Edit</button>-->
+		<br>
+		<form action="parent-update.php" method="post">
+		<input type="hidden" name="parent" value="mother">
+		<button class="btn btn-outline btn-danger btn-lg
+		btn-block" type="submit" name="editFamily">Edit</button></form>
+	  
+	  </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+</div>
+<!--
 <div class ="row">
     <div class="col-md-6">
         <div class="panel panel-default">
@@ -71,24 +209,9 @@
 				<h2>
 				Father Info
 				</h2>
-				<!--<h2 class="panel-title">Family Info</h2>-->
+
 			</div>
 			<div class="panel-body"> 
-				<!--
-				<h3>
-				<span class="label label-info">Name</span>
-				<small>
-						<?php echo $_SESSION['user_name']; ?>
-				</small>
-				</h3>	
-
-				<h3>
-				<span class="label label-info">Address</span>
-				<small>
-						<?php echo $rows[0]['address']; ?>
-				</small>
-				</h3>
-				-->
 				<h3> Name  </h3>
 				<pre> <?php echo $rows[0]['father_name']; ?> </pre>
 				<h3> Address </h3>
@@ -96,8 +219,6 @@
 
 				<h3> Phone </h3>
 				<pre> <?php echo $rows[0]['father_phone']; ?> </pre>
-				<!--<button type="button" class="btn btn-lg btn-danger
-				pull-right">Edit</button>-->
 				<br>
 				<form action="parent-update.php" method="post">
 				<input type="hidden" name="parent" value="father">
@@ -114,24 +235,9 @@
 				<h2>
 					Mother Info
 				</h2>
-				<!--<h2 class="panel-title">Family Info</h2>-->
+
 			</div>
 			<div class="panel-body"> 
-				<!--
-				<h3>
-				<span class="label label-info">Name</span>
-				<small>
-						<?php echo $_SESSION['user_name']; ?>
-				</small>
-				</h3>	
-
-				<h3>
-				<span class="label label-info">Address</span>
-				<small>
-						<?php echo $rows[0]['address']; ?>
-				</small>
-				</h3>
-				-->
 				<h3> Name  </h3>
 				<pre> <?php echo $rows[0]['mother_name']; ?> </pre>
 				<h3> Address </h3>
@@ -139,8 +245,6 @@
 
 				<h3> Phone </h3>
 				<pre> <?php echo $rows[0]['mother_phone']; ?> </pre>
-				<!--<button type="button" class="btn btn-lg btn-danger
-				pull-right">Edit</button>-->
 				<br>
 				<form action="parent-update.php" method="post">
 				<input type="hidden" name="parent" value="mother">
@@ -151,10 +255,9 @@
         </div>
     </div>
 
-
-
-
 </div>
+-->
+
 
 <!--
 <div class="row">
@@ -223,6 +326,8 @@
 </div>
 -->
 
+<br>
+
 <div class="page-header">
 	<h1>Children Settings</h1>
 </div>
@@ -235,6 +340,54 @@
 </pre>
 -->
 
+<div class="row">
+<div class="col-md-8 col-md-offset-2">
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  
+	<?php
+		$iteration = 1; 
+		foreach($children as $child): 
+	?>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="childHeading<?php echo $iteration;
+	?>">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse"
+		href="#childCollapse<?php echo $iteration; ?>" aria-expanded="true" aria-controls="collapseOne">
+			Child <?php echo $iteration; ?> Info
+		</a>
+      </h4>
+    </div>
+    <div id="childCollapse<?php echo $iteration; ?>" class="panel-collapse collapse" role="tabpanel"
+	aria-labelledby="childHeading<?php echo $iteration; ?>">
+      <div class="panel-body"> 
+		<h3> Child ID  </h3>
+		<pre> <?php echo $child['child_id']; ?> </pre>
+		<h3> Child Name </h3>
+		<pre> <?php echo $child['name']; ?> </pre>
+		<br>
+		<form action="child-update.php" method="post">
+		<!--<input type="hidden" name="parent" value="father">-->
+		<button class="btn btn-outline btn-danger btn-lg
+		btn-block" type="submit" name="childEdit" value="<?php echo
+				$child['child_id']; ?>">Edit</button>
+		</form>
+      </div>
+    </div>
+  </div>
+<br>
+
+<?php 
+$iteration++; 
+endforeach; 
+?>
+
+</div>
+</div>
+</div>
+
+<!--
 <div class ="row">
 	<?php
 		$iteration = 1; 
@@ -254,7 +407,7 @@
 				<pre> <?php echo $child['name']; ?> </pre>
 				<br>
 				<form action="child-update.php" method="post">
-				<!--<input type="hidden" name="parent" value="father">-->
+
 				<button class="btn btn-outline btn-danger btn-lg
 				btn-block" type="submit" name="childEdit" value="<?php echo
 					$child['child_id']; ?>">Edit</button>
@@ -269,6 +422,9 @@
 	?>
 
 </div>
+-->
+
+
 
 <?php
     //echo '<h1>Family Info:</h1>'; 

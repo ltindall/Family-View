@@ -1,0 +1,79 @@
+.panel-heading a:after {
+    font-family:'Glyphicons Halflings';
+    content:"\e114";
+    float: right;
+    color: grey;
+}
+.panel-heading a.collapsed:after {
+    content:"\e080";
+}
+
+.panel-heading a.collapsed{
+	text-decoration: none; 
+}
+
+.panel-heading a.collapsed:hover{
+	text-decoration: underline; 
+}
+html{
+	height:100%;
+}
+
+body {
+	height:100%;
+	margin:0; 
+	background-repeat: no-repeat; 
+	background-attachment: fixed; 
+	display:block;
+background-image: -webkit-gradient(
+	linear,
+	left top,
+	left bottom,
+	color-stop(0, #0F4F01),
+	color-stop(1, #1DAB00)
+);
+background-image: -o-linear-gradient(bottom, #0F4F01 0%, #1DAB00 100%);
+background-image: -moz-linear-gradient(bottom, #0F4F01 0%, #1DAB00 100%);
+background-image: -webkit-linear-gradient(bottom, #0F4F01 0%, #1DAB00 100%);
+background-image: -ms-linear-gradient(bottom, #0F4F01 0%, #1DAB00 100%);
+background-image: linear-gradient(to bottom, #0F4F01 0%, #1DAB00 100%);
+	/*background-image: -webkit-gradient(
+	linear,
+	left top,
+	left bottom,
+	color-stop(0, #005406),
+	color-stop(1, #008C00)
+);
+background-image: -o-linear-gradient(bottom, #005406 0%, #008C00 100%);
+background-image: -moz-linear-gradient(bottom, #005406 0%, #008C00 100%);
+background-image: -webkit-linear-gradient(bottom, #005406 0%, #008C00 100%);
+background-image: -ms-linear-gradient(bottom, #005406 0%, #008C00 100%);
+background-image: linear-gradient(to bottom, #005406 0%, #008C00 100%);
+	
+*/
+
+}
+
+#login h1 a{
+	background-image:url(http://test.lucastindall.com/SJV-Web-Header.png); 
+	background-position: center top; 
+	background-size: auto!important; 
+	background-repeat: no-repeat; 
+	display: block; 
+	margin: 0 auto;
+	overflow: hidden; 
+	text-indent: -9999px; 
+	height: 111px; 
+	width: auto; 
+	text-decoration: none; 
+	outline:0; 
+
+}
+
+
+
+.container-main{
+	background-color:white;
+	border-radius:6px;
+	min-height:100%; 
+}
