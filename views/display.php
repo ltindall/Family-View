@@ -22,7 +22,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
+    <title>SJV Family View</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -31,7 +31,9 @@
   
 	<!-- Custom style -->
 	<link href="css/style.css" rel="stylesheet">
-
+	<link
+href='http://fonts.googleapis.com/css?family=Ubuntu|Montserrat|Oswald|Francois+One|Roboto+Slab'
+rel='stylesheet' type='text/css'>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -156,13 +158,36 @@
     </div>
     <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
       <div class="panel-body"> 
-		<h3> Name  </h3>
-		<pre> <?php echo $rows[0]['father_name']; ?> </pre>
-		<h3> Address </h3>
-		<pre> <?php echo $rows[0]['father_address']; ?> </pre>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="row">
+					<div class="col-md-8">
+	  			<h3> Name  </h3>
+				<pre> <?php echo $rows[0]['father_name']; ?> </pre>
+					</div>
+					<div class="col-md-4">
+						<h4> Middle Name </h4>
+						<pre> placeholder </pre>
+					</div>
+				</div>
+				<h3> Address </h3>
+				<pre> <?php echo $rows[0]['father_address']; ?> </pre>
 
-		<h3> Phone </h3>
-		<pre> <?php echo $rows[0]['father_phone']; ?> </pre>
+				<h3> Phone </h3>
+				<pre> <?php echo $rows[0]['father_phone']; ?> </pre>
+			</div>
+			<div class="col-md-6">
+				<h4> Address </h4>
+				<pre> Placeholder </pre>
+				<h4> City </h4>
+				<pre> placeholder </pre>
+				<h4> State </h4>
+				<pre> placeholder </pre>
+				<h4> Zip </h4>
+				<pre> placeholder </pre>
+
+			</div>
+		</div>
 		<!--<button type="button" class="btn btn-lg btn-danger
 		pull-right">Edit</button>-->
 		<br>
@@ -456,6 +481,14 @@ endforeach;
 	*/
 ?>
 </div>
+</div>
+<div class="container">
+	<div class="row">
+      <div class=" footer">
+       4601 Hyland Ave., San Jose, CA 95127 408-258-7677 Fax: 408-258-5997
+		© St. John Vianney School
+      </div>
+	</div>
 </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

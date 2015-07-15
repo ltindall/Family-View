@@ -1,4 +1,4 @@
-.panel-heading a:after {
+/*.panel-heading a:after {
     font-family:'Glyphicons Halflings';
     content:"\e114";
     float: right;
@@ -24,33 +24,19 @@ body {
 	margin:0; 
 	background-repeat: no-repeat; 
 	background-attachment: fixed; 
-	display:block;
+	//display:block;
 background-image: -webkit-gradient(
 	linear,
 	left top,
 	left bottom,
-	color-stop(0, #084501),
-	color-stop(1, #0D8000)
+	color-stop(0, #003800),
+	color-stop(1, #006902)
 );
-background-image: -o-linear-gradient(bottom, #084501 0%, #0D8000 100%);
-background-image: -moz-linear-gradient(bottom, #084501 0%, #0D8000 100%);
-background-image: -webkit-linear-gradient(bottom, #084501 0%, #0D8000 100%);
-background-image: -ms-linear-gradient(bottom, #084501 0%, #0D8000 100%);
-background-image: linear-gradient(to bottom, #084501 0%, #0D8000 100%);	
-	/*background-image: -webkit-gradient(
-	linear,
-	left top,
-	left bottom,
-	color-stop(0, #005406),
-	color-stop(1, #008C00)
-);
-background-image: -o-linear-gradient(bottom, #005406 0%, #008C00 100%);
-background-image: -moz-linear-gradient(bottom, #005406 0%, #008C00 100%);
-background-image: -webkit-linear-gradient(bottom, #005406 0%, #008C00 100%);
-background-image: -ms-linear-gradient(bottom, #005406 0%, #008C00 100%);
-background-image: linear-gradient(to bottom, #005406 0%, #008C00 100%);
-	
-*/
+background-image: -o-linear-gradient(bottom, #003800 0%, #006902 100%);
+background-image: -moz-linear-gradient(bottom, #003800 0%, #006902 100%);
+background-image: -webkit-linear-gradient(bottom, #003800 0%, #006902 100%);
+background-image: -ms-linear-gradient(bottom, #003800 0%, #006902 100%);
+background-image: linear-gradient(to bottom, #003800 0%, #006902 100%);	
 
 }
 
@@ -75,7 +61,10 @@ background-image: linear-gradient(to bottom, #005406 0%, #008C00 100%);
 .container-main{
 	background-color:white;
 	border-radius:6px;
-	min-height:100%; 
+	border-bottom-right-radius: 0px;	
+	border-bottom-left-radius: 0px;
+	min-height:100%;
+	margin:0 auto -100px; 
 }
 .container{
 	width: 970px; 
@@ -88,4 +77,123 @@ background-image: linear-gradient(to bottom, #005406 0%, #008C00 100%);
 .display{
 	padding-left: 50px; 
 	padding-right: 50px; 
-}	
+}
+
+.footer {
+	height: 70px; 	
+	background-color: #DFDFDF; 
+}
+*/
+
+
+.panel-heading a:after {
+    font-family:'Glyphicons Halflings';
+    content:"\e114";
+    float: right;
+    color: grey;
+}
+.panel-heading a.collapsed:after {
+    content:"\e080";
+}
+
+.panel-heading a.collapsed{
+	text-decoration: none; 
+}
+
+.panel-heading a.collapsed:hover{
+	text-decoration: underline; 
+}
+html{
+	height:100%;
+}
+
+body {
+	min-height: 100%;
+	margin:0; 
+	background-repeat: no-repeat; 
+	background-attachment: fixed; 
+	//display:block;
+background-image: -webkit-gradient(
+	linear,
+	left top,
+	left bottom,
+	color-stop(0, #003800),
+	color-stop(1, #006902)
+);
+background-image: -o-linear-gradient(bottom, #003800 0%, #006902 100%);
+background-image: -moz-linear-gradient(bottom, #003800 0%, #006902 100%);
+background-image: -webkit-linear-gradient(bottom, #003800 0%, #006902 100%);
+background-image: -ms-linear-gradient(bottom, #003800 0%, #006902 100%);
+background-image: linear-gradient(to bottom, #003800 0%, #006902 100%);	
+	/*background-image: -webkit-gradient(
+	linear,
+	left top,
+	left bottom,
+	color-stop(0, #005406),
+	color-stop(1, #008C00)
+);
+background-image: -o-linear-gradient(bottom, #005406 0%, #008C00 100%);
+background-image: -moz-linear-gradient(bottom, #005406 0%, #008C00 100%);
+background-image: -webkit-linear-gradient(bottom, #005406 0%, #008C00 100%);
+background-image: -ms-linear-gradient(bottom, #005406 0%, #008C00 100%);
+background-image: linear-gradient(to bottom, #005406 0%, #008C00 100%);
+	
+*/
+	//font-family: 'Ubuntu', sans-serif;
+	//font-family: 'Montserrat', sans-serif;
+	font-family: 'Roboto Slab', serif;
+}
+
+#login h1 a{
+	background-image:url(http://test.lucastindall.com/SJV-Web-Header.png); 
+	background-position: center top; 
+	background-size: auto!important; 
+	background-repeat: no-repeat; 
+	display: block; 
+	margin: 0 auto;
+	overflow: hidden; 
+	text-indent: -9999px; 
+	height: 111px; 
+	width: auto; 
+	text-decoration: none; 
+	outline:0; 
+
+}
+
+
+
+.container-main{
+	background-color:white;
+	border-radius: 9px;
+	border-bottom-right-radius: 0px;	
+	border-bottom-left-radius: 0px;
+	/* min-height: 80%; */
+	/* margin:0 auto -100px; */ 
+}
+.container{
+	width: 970px; 
+}
+
+.display-nav{
+	border-radius:7px; 
+	border-bottom-right-radius: 0px;	
+	border-bottom-left-radius: 0px;
+	background-image:none; 
+	border-color: transparent; 
+}
+.display{
+	padding-left: 50px; 
+	padding-right: 50px; 
+}
+
+.footer {
+	height: 80px; 	
+	background-color: #434A54; 
+	padding: 30px;
+	text-align: center;
+	color:white; 
+}
+
+.footer p{
+	color: white; 
+}

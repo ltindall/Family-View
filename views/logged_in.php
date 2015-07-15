@@ -5,7 +5,7 @@ Try to close this browser tab and open it again. Still logged in! ;)
 Your user_id is <?php echo $_SESSION['user_id']; ?>
 -->
 <!-- because people were asking: "index.php?logout" is just my simplified form of "index.php?logout=true" -->
-<a href="index.php?logout">Logout</a>
+<!--<a href="index.php?logout">Logout</a>-->
 <?php
 
 require_once("views/display.php"); 
