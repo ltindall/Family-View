@@ -141,7 +141,7 @@ rel='stylesheet' type='text/css'>
             <li class="active"><a href="#">Home</a></li>
           </ul>
             <ul class="nav navbar-nav navbar-right" >
-            <li><a href="index.php?logout" class="navbar-nav ">Logout</a></li>
+            <li><a href="http://test.lucastindall.com/index.php?logout" class="navbar-nav ">Logout</a></li>
           </ul>
         </div>
       </div>
