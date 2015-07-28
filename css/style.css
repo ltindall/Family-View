@@ -73,6 +73,12 @@ background-image: linear-gradient(to bottom, #003800 0%, #006902 100%);
 .display-nav{
 	border-bottom-right-radius: 0px;	
 	border-bottom-left-radius: 0px;
+	background-color: #4582ec; 
+}
+.navbar-inverse{
+	
+	background-color: #4582ec; 
+
 }
 .display{
 	padding-left: 50px; 
@@ -84,7 +90,6 @@ background-image: linear-gradient(to bottom, #003800 0%, #006902 100%);
 	background-color: #DFDFDF; 
 }
 */
-
 
 .panel-heading a:after {
     font-family:'Glyphicons Halflings';
@@ -102,6 +107,13 @@ background-image: linear-gradient(to bottom, #003800 0%, #006902 100%);
 
 .panel-heading a.collapsed:hover{
 	text-decoration: underline; 
+}
+
+
+.panel-heading{
+	background-color: #434A54; 
+	color: white; 
+
 }
 html{
 	height:100%;
@@ -167,6 +179,7 @@ background-image: linear-gradient(to bottom, #005406 0%, #008C00 100%);
 	border-radius: 9px;
 	border-bottom-right-radius: 0px;	
 	border-bottom-left-radius: 0px;
+	background-image:url(http://test.lucastindall.com/ecailles.png); 
 	/* min-height: 80%; */
 	/* margin:0 auto -100px; */ 
 }
@@ -179,7 +192,9 @@ background-image: linear-gradient(to bottom, #005406 0%, #008C00 100%);
 	border-bottom-right-radius: 0px;	
 	border-bottom-left-radius: 0px;
 	background-image:none; 
-	border-color: transparent; 
+	border-color: transparent;
+
+	//background-color: #4582ec; 
 }
 .display{
 	padding-left: 50px; 
@@ -197,3 +212,19 @@ background-image: linear-gradient(to bottom, #005406 0%, #008C00 100%);
 .footer p{
 	color: white; 
 }
+
+.info-body{
+
+	padding: 30px; 
+}
+
+.modal-open .modal,.btn:focus{
+	outline:none!important; 
+}
+
+pre{
+	padding: 4px; 
+}
+
+
+

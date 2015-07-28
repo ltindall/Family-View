@@ -8,5 +8,6 @@ Your user_id is <?php echo $_SESSION['user_id']; ?>
 <!--<a href="index.php?logout">Logout</a>-->
 <?php
 
-require_once("views/display.php"); 
+//require_once("views/display.php"); 
+header('Location: http://test.lucastindall.com/views/display.php');
 ?>

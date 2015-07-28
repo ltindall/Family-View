@@ -17,6 +17,7 @@ function db_connect() {
 	
     // Define connection as a static variable, to avoid connecting more than once 
     static $connection;
+	chdir($_SERVER['DOCUMENT_ROOT']); 	
 
     // Try and connect to the database, if a connection has not been established yet
     if(!isset($connection)) {
@@ -28,7 +29,10 @@ function db_connect() {
 
     // If connection was not successful, handle the error
     if($connection === false) {
-        // Handle error - notify administrator, log to a file, show an error screen, etc.
+		
+	$message =$_SERVER['DOCUMENT_ROOT'] ;
+	echo "<script type='text/javascript'>alert('$message');</script>";
+		// Handle error - notify administrator, log to a file, show an error screen, etc.
         return mysqli_connect_error(); 
     }
     return $connection;
@@ -45,7 +49,7 @@ function db_query($query) {
     $connection = db_connect();
 
     // Query the database
-    $result = mysqli_query($connection,$query);
+    $result = mysqli_query($connection,$query) or die(mysqli_error($connection));
 
     return $result;
 }
@@ -57,6 +61,7 @@ function db_query($query) {
  * @return bool False on failure / array Database rows on success
  */
 function db_select($query) {
+
     $rows = array();
     $result = db_query($query);
 

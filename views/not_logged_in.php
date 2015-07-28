@@ -61,7 +61,8 @@ if (isset($login)) {
                         <h3 class="panel-title">Please Sign In</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form" method="post" action="index.php" name="loginform">
+<!--
+                        <form id="loginForm" name="loginform">
                             <fieldset>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Family ID" name="user_name" type="username" autofocus required>
@@ -69,20 +70,23 @@ if (isset($login)) {
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Password" name="user_password" type="password" value="" required>
                                 </div>
-								<!--
-                                <div class="checkbox">
-                                    <label>
-                                        <input name="remember" type="checkbox" value="Remember Me">Remember Me
-                                    </label>
-                                </div>
-								-->
-                                <!-- Change this to a button or input when using this as a form -->
-								<input class="btn btn-lg btn-primary btn-block" type="submit" name="login" value="Login" />
-								<!--	
-                                <a href="index.html" class="btn btn-lg btn-success btn-block">Login</a>
-								-->
+								<input class="btn btn-lg btn-primary btn-block" type="submit"
+onClick="submitLogin()" name="login" value="Login" />
                             </fieldset>
-                        </form>
+						</form>
+-->
+						<form role="form" method="post" action="index.php" name="loginform">
+                            <fieldset>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Family ID" name="user_name" type="username" autofocus required>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Password" name="user_password" type="password" value="" required>
+                                </div>
+								<input class="btn btn-lg btn-primary btn-block" type="submit" name="login" value="Login" />
+                            </fieldset>
+						</form>
+
                     </div>
                 </div>
             </div>
@@ -111,6 +115,27 @@ if (isset($login)) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  </body>
+	<script type="text/javascript">
+		function submitLogin()
+		{
+			alert("working"); 
+			$.ajax({
+				type: "POST", 
+				url: "http://test.lucastindall.com/index.php", 
+				data: $("#loginForm").serialize(), 
+				success: function(msg){
+					location.reload(); 
+
+
+				}
+
+
+
+			}); 
+
+
+		}
+	</script>
+	</body>
 </html>
 
