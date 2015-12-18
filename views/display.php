@@ -1,25 +1,10 @@
 <?php
-	echo "hi"; 
-session_start(); 
+
+ 
+	session_start(); 
 	require_once(__DIR__.'/../db_functions.php'); 
 
-echo $_SESSION['user_id'];  
-	$rows = db_select("SELECT * FROM `info` WHERE id= ".
-		    $_SESSION['user_id'] ); 
-	
-	echo "hello"; 
-	
-	if($rows ==false) {
-		$error = db_error();
-		alert("not working"); 
-    }
-	
-	/*
-    $children = db_select("SELECT * FROM `child_info` WHERE `family_id` =
-		    ".$_SESSION['user_id'] ); 
-	*/
-
-	$children = db_select("SELECT * FROM `children` WHERE `familyID` = 
+	$children = db_select("SELECT * FROM `students` WHERE `familyID` = 
 			".$_SESSION['user_id']); 
 
     if($children == false) {
@@ -141,7 +126,7 @@ rel='stylesheet' type='text/css'>
             <li class="active"><a href="#">Home</a></li>
           </ul>
             <ul class="nav navbar-nav navbar-right" >
-            <li><a href="http://test.lucastindall.com/index.php?logout" class="navbar-nav ">Logout</a></li>
+            <li><a href="http://parents.sjvsj.org/index.php?logout" class="navbar-nav ">Logout</a></li>
           </ul>
         </div>
       </div>

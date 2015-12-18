@@ -33,13 +33,16 @@
 	$familyDDSPhone = db_quote($_POST['familyDDSPhone']); 
 	$studentID = db_quote($_POST['studentID']); 
 
-	$update = db_query("UPDATE `login`.`children` SET `nameF`="
-		.$firstName.
-		",`nameM`=".$middleName.
-		", `nameL` = ".$lastName.
-		", `grade` = ".$grade.
-		", `birthdate` = ".$birthdate.
-		", `allergiesComments`=".$allergies.
+	$_SESSION['message'] = $studentID;  
+
+
+	$update = db_query("UPDATE `sjvsjo5_registration2015`.`students` SET". 
+		//"`nameF`=".$firstName.
+		//",`nameM`=".$middleName.
+		//", `nameL` = ".$lastName.
+		//", `grade` = ".$grade.
+		//", `birthdate` = ".$birthdate.
+		" `allergiesComments`=".$allergies.
 		",`medication` =".$medications.
 		", `medicationComments`= ".$medicationComments.
 		", `contact1`=".$emergencyContact1.
@@ -62,15 +65,20 @@
 		", `familyDrPhone`=".$familyDrPhone.
 		", `familyDDS`=".$familyDDS.
 		", `familyDDSPhone`=".$familyDDSPhone.
-		" WHERE `children`.`familyID`= ".$_SESSION['user_id'].
-		" AND `children`.`studentID` = ".$studentID);
+		" WHERE `students`.`familyID`= ".$_SESSION['user_id'].
+		" AND `students`.`studentID` = ".$studentID);
 	if( $update === TRUE){
 		$_SESSION['message'] = "student";  
 		
+		$_SESSION['editID'] = $studentID; 
+		
 		$connection = db_connect();
-	
-		$_SESSION['editName'] = mysqli_real_escape_string($connection,$_POST['firstName']." ".$_POST['lastName']);
+		$updatedRows = mysqli_affected_rows($connection) ; 
+		if($updatedRows == 0 )
+			$_SESSION['message'] = "none"; 
+		//$_SESSION['editName'] = mysqli_real_escape_string($connection,$_POST['firstName']." ".$_POST['lastName']);
 	}
-
-
+	else{
+		//echo $update; 
+	}
 ?>
