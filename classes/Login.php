@@ -44,6 +44,8 @@ class Login
      */
     private function dologinWithPostData()
     {
+	require_once("phptest/lib/password.php");
+
         // check login form contents
         if (empty($_POST['user_name'])) {
             $this->errors[] = "Username field was empty.";
@@ -89,10 +91,10 @@ class Login
                         $_SESSION['user_login_status'] = 1;
 
                     } else {
-                        $this->errors[] = "Wrong password. Try again.";
+                        $this->errors[] = "Oops!  The password is incorrect.  Please try again.";
                     }
                 } else {
-                    $this->errors[] = "This user does not exist.";
+                    $this->errors[] = "Oops! The family ID is incorrect. Please try again. ";
                 }
             } else {
                 $this->errors[] = "Database connection problem.";
