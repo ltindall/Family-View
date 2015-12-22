@@ -53,7 +53,7 @@ if (isset($login)) {
 <br>
 <div id="login">
 <h1>
-<a href="/" tabindex="-1"> SJV Family View </a>    
+<a href="/" tabindex="-1"> SJV Family View</a>    
 </h1>
 </div>
 

@@ -22,7 +22,7 @@ if (version_compare(PHP_VERSION, '5.3.7', '<')) {
 require_once("phptest/lib/password.php");
 
 // include the configs / constants for the database connection
-require_once(__DIR__."/../../config/db.php");
+require_once(__DIR__."/db-credentials/db.php");
 
 // load the login class
 require_once("classes/Login.php");

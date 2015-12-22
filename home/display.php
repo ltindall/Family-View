@@ -3,7 +3,7 @@
  
 	session_start(); 
 	if( !isset($_SESSION['user_id']))
-		header('Location: https://parents.sjvsj.org/');	
+		header('Location: http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'/');	
 	require_once(__DIR__.'/../db_functions.php'); 
 
 	$children = db_select("SELECT * FROM `students` WHERE `familyID` = 
@@ -16,6 +16,8 @@
 
 	$parents_data = db_select("SELECT * FROM `family` WHERE `familyID` = 
 		".$_SESSION['user_id'] ); 
+	
+	
 	
 	$f_address_city = $parents_data[0]['F_Address_City']; 
 	$f_address_state = $parents_data[0]['F_Address_State']; 
@@ -142,10 +144,10 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="https://parents.sjvsj.org/">Home</a></li>
+            <li class="active"><a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/">Home</a></li>
           </ul>
             <ul class="nav navbar-nav navbar-right" >
-            <li><a href="https://parents.sjvsj.org/index.php?logout" class="navbar-nav ">Logout</a></li>
+            <li><a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/index.php?logout" class="navbar-nav ">Logout</a></li>
           </ul>
         </div>
       </div>

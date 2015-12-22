@@ -11,7 +11,7 @@
 	}
 	require_once("phptest/lib/password.php"); 
 	//require_once("../config/db.php");
-	require_once('../../config/db.php');
+	require_once('db-credentials/db.php');
 	$db_connection = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
 	require_once("db_functions.php"); 
@@ -27,7 +27,7 @@
 		$plaintext = $tempPassword['user_password_hash']; 
 
 		$user_password_hash = password_hash($plaintext, PASSWORD_DEFAULT);
-		$update = db_query("UPDATE `sjvsjo5_registration2015`.`users` SET `user_password_hash` = '"
+		$update = db_query("UPDATE `c9`.`users` SET `user_password_hash` = '"
 			.$user_password_hash."' WHERE `users`.`user_id` = ".$tempPassword['user_id']);
 
 	}
