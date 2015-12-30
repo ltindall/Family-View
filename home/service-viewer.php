@@ -5,6 +5,95 @@
 	if( !isset($_SESSION['user_id']))
 		header('Location: http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'/');	
 	require_once(__DIR__.'/../db_functions.php'); 
+	
+	$serviceEntries = db_select("SELECT * FROM `service` WHERE `familyID` = 
+		".$_SESSION['user_id']." ORDER BY `servicedate` DESC");
+		
+		
+  $lastSpecial = db_select("SELECT * FROM `tallyTimes` ORDER BY `id` DESC LIMIT 3");
+  if($lastSpecial[0]['type'] == "Updated")
+    $lastTime = $lastSpecial[1]['timestamp']; 
+  else
+    $lastTime = $lastSpecial[2]['timestamp']; 
+    
+  
+  $hoursCount = 0; 
+  $hoursPercent = 0; 
+  foreach($serviceEntries as $serviceEntry){
+    if(strcmp($serviceEntry['approved'],"yes") == 0 && $serviceEntry['created'] <= $lastTime  )
+      $hoursCount += floatval($serviceEntry['hours']); 
+  }
+  $hoursPercent = intval(($hoursCount/45) * 100); 
+
+  
+  function approvalRowColor($approvalStatus, $timestamp){
+    //echo "class='info'"; 
+    global $lastTime; 
+    if($timestamp > $lastTime){
+      echo 'class="info"'; 
+      return; 
+    }
+    
+    switch($approvalStatus) {
+      case "pending": 
+        echo 'class="info"'; 
+        break; 
+      case "yes": 
+        echo 'class="success"'; 
+        break; 
+      case "no": 
+        echo 'class="danger"'; 
+        break; 
+      case "duplicate": 
+        echo 'class="danger"'; 
+        break; 
+      case "late": 
+        echo 'class="danger"'; 
+        break; 
+      case "details": 
+        echo 'class="warning"'; 
+        break; 
+      
+    }
+    
+  }
+  
+  
+
+    
+  function approvalRowMessage($approvalStatus, $timestamp){
+    //echo "class='info'"; 
+    
+    global $lastTime; 
+    if($timestamp > $lastTime){
+      echo 'Pending'; 
+      return; 
+    }
+    
+    switch($approvalStatus) {
+      case "pending": 
+        echo 'Pending'; 
+        break; 
+      case "yes": 
+        echo 'Yes'; 
+        break; 
+      case "no": 
+        echo 'No'; 
+        break; 
+      case "duplicate": 
+        echo 'No, duplicate entry.'; 
+        break; 
+      case "late": 
+        echo 'No, entry submitted too late.'; 
+        break; 
+      case "details": 
+        echo 'No, need more details.'; 
+        break; 
+      
+    }
+    
+  }
+
 
 
 ?>
@@ -65,11 +154,11 @@
 <br><br>
 
 <!-- MAIN CONTAINER -->
-<div class="container container-main" role="main">
+<div class="container container-main container-wide" role="main">
 
     <!-- NAVBAR -->
     <div class="navbar navbar-inverse row display-nav" role="navigation">
-      <div class="container">
+      <div class="container container-wide">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
@@ -80,9 +169,15 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/">Home</a></li>
+            <li><a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/home/display.php">Family Student Info</a></li>
           </ul>
-            <ul class="nav navbar-nav navbar-right" >
+          <ul class="nav navbar-nav">
+            <li ><a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/home/service-submit.php">Submit Service Hours</a></li>
+          </ul>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/home/service-viewer.php">View Service Hours</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right" >
             <li><a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/index.php?logout" class="navbar-nav ">Logout</a></li>
           </ul>
         </div>
@@ -92,15 +187,55 @@
 
     <!-- MAIN WINDOW -->
     <div class="display">
-    	
-        
+    	<div class="page-header" id="service-header">  
+        	<h1>Family Service Hours</h1>
+        	<div class="progress">
+            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<?php echo $hoursPercent; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $hoursPercent; ?>%;">
+              <?php echo $hoursCount; ?> hours = <?php echo $hoursPercent; ?>%
+            </div>
+          </div>
+      </div>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Service Date</th>
+            <th>Service Hours</th>
+            <th>Service Activity Type</th>
+            <th>Service Coordinator</th>
+            <th>Activity Performed</th>
+            <th>Approval Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Start of foreach for service entries -->
+          <?php foreach($serviceEntries as $serviceEntry): ?>
+          <tr <?php approvalRowColor($serviceEntry['approved'], $serviceEntry['created']); ?> >
+            <td><?php echo $serviceEntry['name']; ?></td>
+            <td>
+              <?php 
+                $serviceDate = date_create($serviceEntry['servicedate']); 
+                echo date_format($serviceDate, 'm-d-Y');
+              ?>
+            </td>
+            <td><?php echo $serviceEntry['hours']; ?></td>
+            <td><?php echo $serviceEntry['activitytype']; ?></td>
+            <td><?php echo $serviceEntry['activitycoordinator']; ?></td>
+            <td><?php echo $serviceEntry['activityperformed']; ?></td>
+            <td><?php approvalRowMessage($serviceEntry['approved'], $serviceEntry['created']); ?></td>
+          </tr>
+          <?php endforeach; ?>
+          <!-- End of foreach for service entries --> 
+        </tbody>
+      </table>
+      
     </div>
     <!-- END MAIN WINDOW -->
 </div>
 <!-- END MAIN CONTAINER --> 
 
 <!-- FOOTER -->
-<div class="container">
+<div class="container container-wide">
 	<div class="row">
       <div class=" footer">
        4601 Hyland Ave., San Jose, CA 95127 408-258-7677 Fax: 408-258-5997

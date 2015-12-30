@@ -144,9 +144,15 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/">Home</a></li>
+            <li class="active"><a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/home/display.php">Family Student Info</a></li>
           </ul>
-            <ul class="nav navbar-nav navbar-right" >
+          <ul class="nav navbar-nav">
+            <li ><a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/home/service-submit.php">Submit Service Hours</a></li>
+          </ul>
+          <ul class="nav navbar-nav">
+            <li ><a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/home/service-viewer.php">View Service Hours</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right" >
             <li><a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/index.php?logout" class="navbar-nav ">Logout</a></li>
           </ul>
         </div>

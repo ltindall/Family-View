@@ -30,6 +30,41 @@
 	color: white; 
 
 }
+.progress{
+	margin-bottom:10px;
+	margin-top:15px;
+}
+#tallySave{
+	/*
+	clear: both; 
+	display:block;
+	*/
+}
+#tallySaveChair{
+	margin-left:67px;
+}
+#overflow{
+	overflow:auto;
+	clear:both;
+	padding-bottom:10px;
+}
+#goButton{
+	margin-right:10px;
+}
+
+#nextButton{
+	margin-right:10px;
+}
+#goButtonNo{
+	margin-right:10px;
+}
+
+#nextButtonNo{
+	margin-right:10px;
+}
+#messageTable{
+	margin-bottom:0px;
+}
 html{
 	height:100%;
 }
@@ -54,6 +89,23 @@ body {
 	background-image: linear-gradient(to bottom, #003800 0%, #006902 100%);	
 	font-family: 'Roboto Slab', serif;
 	height: 100% !important;
+}
+
+#familyID{
+	font-size:22px;
+	height:34px;
+}
+
+#tallyChairStatus{
+	font-size:20px;
+	height:34px;
+}
+
+#familyIDNum{
+	width:60px;
+}
+#familyIDNumNo{
+	width:60px;
 }
 
 #login h1 a{
@@ -109,6 +161,14 @@ body {
 	width: 970px; 
 }
 
+.container-wide{
+	width: 1170px;
+}
+
+.floatRight{
+	float:right;
+}
+
 .display-nav{
 	border-radius:7px; 
 	border-bottom-right-radius: 0px;	
@@ -154,6 +214,7 @@ pre{
 .page-header{
 	border-bottom: 2px solid #000; 
 	margin-top:30px; 
+	/*overflow:auto;*/
 }
 
 .login-panel{

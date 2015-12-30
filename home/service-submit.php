@@ -80,9 +80,15 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/">Home</a></li>
+            <li><a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/home/display.php">Family Student Info</a></li>
           </ul>
-            <ul class="nav navbar-nav navbar-right" >
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/home/service-submit.php">Submit Service Hours</a></li>
+          </ul>
+          <ul class="nav navbar-nav">
+            <li ><a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/home/service-viewer.php">View Service Hours</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right" >
             <li><a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/index.php?logout" class="navbar-nav ">Logout</a></li>
           </ul>
         </div>
@@ -95,11 +101,11 @@
     	
     	<!-- MESSAGE -->
     	<?php if(isset($_SESSION['message'])):
-			if($_SESSION['message']!="Error"): ?>
+			if($_SESSION['message']=="Success"): ?>
 				<br>
 				<div class="alert alert-info alert-dismissible" role="alert">
 				  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				  <strong>Success! </strong> <?php echo $_SESSION['message']; ?>
+				  <strong><?php echo $_SESSION['message']; ?>! Your submission has been received.</strong>
 				</div>
 		<?php else: ?>
 			<br>
@@ -150,6 +156,7 @@
 					    <p>If you worked two shifts on the same day for the same activity, enter only the total for the day.</p>
 					    <select width="70" style="width: 70px" class="form-control" id="hours" name="hours" placeholder="Enter a number between 0 and 12 for hours worked." required>
 					    	<option></option>
+				  			<option value="0">0</option>
 				  			<option value="1">1</option>
 	  						<option value="2">2</option>
 	  						<option value="3">3</option>
