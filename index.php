@@ -35,7 +35,16 @@ $login = new Login();
 if ($login->isUserLoggedIn() == true) {
     // the user is logged in. you can do whatever you want here.
     // for demonstration purposes, we simply show the "you are logged in" view.
-    include("views/logged_in.php");
+    
+    if($_SESSION['user_id'] == '9000'){
+        include("views/tally_logged_in.php"); 
+    }
+    elseif($_SESSION['user_id'] == '9541'){
+        include("views/tally_chair_logged_in.php"); 
+    }
+    else{
+        include("views/logged_in.php");
+    }
 
 } else {
     // the user is not logged in. you can do whatever you want here.

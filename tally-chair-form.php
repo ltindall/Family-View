@@ -13,42 +13,64 @@
 			$_SESSION['message'] = "All changes to service hours have been updated successfully."; 
 			$update = db_query("INSERT INTO `c9`.`tallyTimes` (id, type) VALUES ( NULL, 'Updated')"); 
 		}
-		header('Location: http://'.$_SERVER['HTTP_HOST'].'/home/service-tally-chair.php?id='.$_SESSION['approving_user_id_chair']);
-		exit(); 
+		if(!isset($_SESSION['approving_user_id_chair'])){
+			header('Location: http://'.$_SERVER['HTTP_HOST'].'/home/service-tally-chair.php');
+			exit(); 
+		}
+		if($_SESSION['approvingNos'] == 1){
+			header('Location: http://'.$_SERVER['HTTP_HOST'].'/home/service-tally-chair.php?noID='.$_SESSION['approving_user_id_chair']);
+			exit(); 
+		}
+		elseif($_SESSION['approvingNos'] == 0){
+			header('Location: http://'.$_SERVER['HTTP_HOST'].'/home/service-tally-chair.php?id='.$_SESSION['approving_user_id_chair']);
+			exit(); 
+		}
 	}
 	
-	$familyEntries = db_select("SELECT * FROM `service` WHERE `familyID` = ".$_SESSION['approving_user_id_chair']." ORDER BY `servicedate` DESC");
-	 
-	$shouldHaveChanged = 0; 
-	$changed = 0; 
-	for($i = 0; $i < count($familyEntries); $i++){ 
-	
-		if( strcmp($familyEntries[$i]['approved'], substr(db_quote($_POST['approval'.$i]), 1, -1)) != 0){
-			$update = db_query("UPDATE `c9`.`service` SET ".
-			" `approved` = ".db_quote($_POST['approval'.$i]).
-			", `modified` = NOW()".
-				//" `approved` = ".db_quote($_POST['approval'.strval($i)]).
-				" WHERE `service`.`id`= ".$familyEntries[$i]['id']);
-				$shouldHaveChanged++; 
-				$changed += mysqli_affected_rows(db_connect()); 
-		}	
-	}
-	 
-	 
+	if(isset($_SESSION['approving_user_id_chair'])){
+		$lastProcess = db_select("SELECT * FROM `tallyTimes` WHERE `type` = 'Processing' ORDER BY `id` DESC LIMIT 2");
+		$familyEntries = db_select("SELECT * FROM `service` WHERE `familyID` = ".$_SESSION['approving_user_id_chair']." AND `created` <  '".$lastProcess[0]['timestamp']."' ORDER BY `servicedate` DESC");
+		 
+		$shouldHaveChanged = 0; 
+		$changed = 0; 
+		for($i = 0; $i < count($familyEntries); $i++){ 
 		
-	if( $update === TRUE){
-		
-		$_SESSION['message'] = "Success";  
-		
-		
-		if($shouldHaveChanged != $changed)
-			$_SESSION['message'] = "Error"; 
+			if( strcmp($familyEntries[$i]['approved'], substr(db_quote($_POST['approval'.$i]), 1, -1)) != 0){
+				$update = db_query("UPDATE `c9`.`service` SET ".
+				" `approved` = ".db_quote($_POST['approval'.$i]).
+				", `modified` = NOW()".
+					//" `approved` = ".db_quote($_POST['approval'.strval($i)]).
+					" WHERE `service`.`id`= ".$familyEntries[$i]['id']);
+					$shouldHaveChanged++; 
+					$changed += mysqli_affected_rows(db_connect()); 
+			}	
+		}
+		 
+		 
 			
-		//$_SESSION['editName'] = mysqli_real_escape_string($connection,$_POST['firstName']." ".$_POST['lastName']);
-	}
-	else{
-		//echo $update; 
+		if( $update === TRUE){
+			
+			$_SESSION['message'] = "Success";  
+			
+			
+			if($shouldHaveChanged != $changed)
+				$_SESSION['message'] = "Error"; 
+				
+			//$_SESSION['editName'] = mysqli_real_escape_string($connection,$_POST['firstName']." ".$_POST['lastName']);
+		}
+		else{
+			//echo $update; 
+		}
+		if($_SESSION['approvingNos'] == 1){
+			header('Location: http://'.$_SERVER['HTTP_HOST'].'/home/service-tally-chair.php?noID='.$_SESSION['approving_user_id_chair']);
+			exit(); 
+		}
+		elseif($_SESSION['approvingNos'] == 0){
+			header('Location: http://'.$_SERVER['HTTP_HOST'].'/home/service-tally-chair.php?id='.$_SESSION['approving_user_id_chair']);
+			exit(); 
+		}
+		
 	}
 	
-	header('Location: http://'.$_SERVER['HTTP_HOST'].'/home/service-tally-chair.php?id='.$_SESSION['approving_user_id_chair']);
+	header('Location: http://'.$_SERVER['HTTP_HOST'].'/home/service-tally-chair.php');
 ?>

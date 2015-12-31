@@ -2,7 +2,7 @@
 
  
 	session_start(); 
-  if( !isset($_SESSION['user_id']))
+  if( !isset($_SESSION['user_id']) || $_SESSION['user_id'] != '9541')
 	  header('Location: http://'.$_SERVER['HTTP_HOST']);	
 		///header('Location: http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'/');	
 	require_once(__DIR__.'/../db_functions.php'); 
@@ -77,15 +77,19 @@
 	if( isset($_GET['noID'])) {
 	  $familyID = substr(db_quote($_GET['noID']), 1, -1); 
 	  $_SESSION['approving_user_id_chair'] = $familyID; 
+	  $_SESSION['approvingNos'] = 1; 
 	  $serviceEntries = db_select("SELECT * FROM `service` WHERE `familyID` = ".db_quote($_GET['noID'])." AND `created` <  '".$lastProcess[0]['timestamp']."' ORDER BY `servicedate` DESC");
 	}
 	else if( isset($_GET['id'])) {
 	  $familyID = substr(db_quote($_GET['id']), 1, -1); 
 	  $_SESSION['approving_user_id_chair'] = $familyID; 
+	  $_SESSION['approvingNos'] = 0; 
 	  $serviceEntries = db_select("SELECT * FROM `service` WHERE `familyID` = ".db_quote($_GET['id'])." AND `created` <  '".$lastProcess[0]['timestamp']."' ORDER BY `servicedate` DESC");
 	}
 	else{
 	  $familyID = "N/A"; 
+	  unset($_SESSION['approvingNos']);
+	  unset($_SESSION['approving_user_id_chair']); 
 	}
 
   $lastSpecial = db_select("SELECT * FROM `tallyTimes` ORDER BY `id` DESC LIMIT 1");
@@ -168,7 +172,7 @@
 
 <!-- SJV Logo Header-->
 <div id="login">
-    <h1><a href="/" tabindex="-1"> SJV Family View </a></h1>
+    <h1><a href="http://<?php echo $_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']; ?>" tabindex="-1"> SJV Family View </a></h1>
 </div>
 
 <br><br>
@@ -189,7 +193,7 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/">Home</a></li>
+            <li class="active"><a href="http://<?php echo $_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']; ?>">Tally Chair Home</a></li>
           </ul>
             <ul class="nav navbar-nav navbar-right" >
             <li><a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/index.php?logout" class="navbar-nav ">Logout</a></li>

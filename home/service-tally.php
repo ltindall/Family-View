@@ -2,11 +2,12 @@
 
  
 	session_start(); 
-  if( !isset($_SESSION['user_id']))
+  if( !isset($_SESSION['user_id']) || $_SESSION['user_id'] != '9000')
 	  header('Location: http://'.$_SERVER['HTTP_HOST']);	
 		///header('Location: http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'/');	
 	require_once(__DIR__.'/../db_functions.php'); 
 	
+
 	if( isset($_GET['id'])){
 	  $families = db_select("SELECT `user_id` FROM `users`");
 	  echo count($families); 
@@ -116,7 +117,7 @@
 
 <!-- SJV Logo Header-->
 <div id="login">
-    <h1><a href="/" tabindex="-1"> SJV Family View </a></h1>
+    <h1><a href="http://<?php echo $_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']; ?>" tabindex="-1"> SJV Family View </a></h1>
 </div>
 
 <br><br>
@@ -137,7 +138,7 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/">Home</a></li>
+            <li class="active"><a href="http://<?php echo $_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']; ?>">Tally Home</a></li>
           </ul>
             <ul class="nav navbar-nav navbar-right" >
             <li><a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/index.php?logout" class="navbar-nav ">Logout</a></li>
